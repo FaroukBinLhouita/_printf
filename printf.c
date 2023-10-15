@@ -8,61 +8,53 @@
  */
 int _printf(const char *format, ...)
 {
-    int count = 0;
-    va_list list;
+int j = 0, count = 0;
+va_list list;
 
-    if (format == NULL)
-    {
-        return (-1);
-    }
+if (format == NULL)
+{
+return (-1);
+}
 
-    va_start(list, format);
+va_start(list, format);
 
-    while (*format)
-    {
-        if (*format != '%')
-        {
-            write(1, format, 1);
-            count++;
-        }
-        else
-        {
-            format++;
-            if (*format == '\0')
-            {
-                break;
-            }
+while (format[j] != '\0')
+{
+if (format[j] != '%')
+{
+write(1, &format[j], 1);
+count++;
+}
+else
+{
+format++;
+if (format[j] == '%')
+{
+write(1, &format[j], 1);
+count++;
+}
+else if (format[j] == 'c')
+{
+char c = va_arg(list, int);
+write(1, &c, 1);
+count++;
+}
+else if (format[j] == 's')
+{
+int i = 0;
+char *string = va_arg(list, char*);
 
-            if (*format == '%')
-            {
-                write(1, format, 1);
-                count++;
-            }
-            else if (*format == 'c')
-            {
-                char c = va_arg(list, int);
-                write(1, &c, 1);
-                count++;
-            }
-            else if (*format == 's')
-            {
-            int i = 0;
-            char *string = va_arg(list, char*);
+while (string[i] != '\0')
+{
+i++;
+}
 
-            while (string[i] != '\0')
-            {
-                i++;
-            }
-            
-            write(1, string, i);
-            count += i;
-            }
-        }
-
-    format++;
-    }
-
-    va_end(list);
-
-    return (count);
+write(1, string, i);
+count += i;
+}
+}
+j++;
+}
+va_end(list);
+return (count);
 }
