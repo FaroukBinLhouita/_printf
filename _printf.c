@@ -33,12 +33,14 @@ if (format[j] == '%')
 write(1, &format[j], 1);
 count++;
 }
+
 else if (format[j] == 'c')
 {
 char c = va_arg(list, int);
 write(1, &c, 1);
 count++;
 }
+
 else if (format[j] == 's')
 {
 int i = 0;
@@ -51,6 +53,20 @@ i++;
 
 write(1, string, i);
 count += i;
+}
+
+else if (format[j] == 'i')
+{
+int integer = va_arg(list, int);
+write(1, &integer, 4);
+count++;
+}
+
+else if (format[j] == 'd')
+{
+int dicemal = va_arg(list, double);
+write(1, &dicemal, 8);
+count++;
 }
 }
 j++;
