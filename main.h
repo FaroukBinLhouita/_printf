@@ -2,7 +2,7 @@
 #define MAIN.H
 #include <stdarg.h>
 #include <string.h>
-#include <unsitd.h>
+#include <unistd.h>
 
 int _printf(const char *format, ...);
 
