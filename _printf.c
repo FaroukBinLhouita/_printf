@@ -3,7 +3,7 @@
 /**
  * _printf - my printf function
  *
- * @fotmat: the string should print
+ * @format: the string should print
  * Return: an intager
  */
 int _printf(const char *format, ...)
