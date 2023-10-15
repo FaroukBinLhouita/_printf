@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
 
 /**
  * _printf - my printf function
@@ -8,47 +6,55 @@
  * @format: the string should print
  * Return: an intager
  */
-int _printf(const char *format, ...) {
-    if (format == NULL) {
-        return -1;
-    }
+int _printf(const char *format, ...)
+{
+int j = 0, count = 0;
+va_list list;
 
-    va_list args;
-    va_start(args, format);
+if (format == NULL)
+{
+return (-1);
+}
 
-    int count = 0;
+va_start(list, format);
 
-    while (*format) {
-        if (*format != '%') {
-            write(1, format, 1);
-            count++;
-        } else {
-            format++;  // Move to the character after '%'
-            if (*format == '\0') {
-                break;  // Break if '%' is at the end of the format string
-            }
+while (format[j] != '\0')
+{
+if (format[j] != '%')
+{
+write(1, &format[j], 1);
+count++;
+}
+else
+{
+j++;
+if (format[j] == '%')
+{
+write(1, &format[j], 1);
+count++;
+}
+else if (format[j] == 'c')
+{
+char c = va_arg(list, int);
+write(1, &c, 1);
+count++;
+}
+else if (format[j] == 's')
+{
+int i = 0;
+char *string = va_arg(list, char*);
 
-            if (*format == '%') {
-                write(1, format, 1);
-                count++;
-            } else if (*format == 'c') {
-                char c = (char)va_arg(args, int);
-                write(1, &c, 1);
-                count++;
-            } else if (*format == 's') {
-                char *str = va_arg(args, char*);
-                int i = 0;
-                while (str[i] != '\0') {
-                    write(1, &str[i], 1);
-                    count++;
-                    i++;
-                }
-            }
-        }
-        format++;
-    }
+while (string[i] != '\0')
+{
+i++;
+}
 
-    va_end(args);
-
-    return count;
+write(1, string, i);
+count += i;
+}
+}
+j++;
+}
+va_end(list);
+return (count);
 }
