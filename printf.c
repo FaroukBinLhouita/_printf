@@ -13,7 +13,7 @@ int int_return = 0;
 
 if (*format == NULL)
 {
-return(-1);
+return (-1);
 }
 
 va_list list;
@@ -32,7 +32,7 @@ format++;
 if (*format == '\0')
 {
 break;
-}     
+}
 
 if (*format == '%')
 {
@@ -55,7 +55,7 @@ for (i = 0; string[i] != '\0'; i++)
 ;
 write(1, string, i);
 int_return += i;
-}    
+}
 }
 
 format++;
