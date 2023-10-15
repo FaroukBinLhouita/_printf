@@ -27,7 +27,7 @@ count++;
 }
 else
 {
-format++;
+j++;
 if (format[j] == '%')
 {
 write(1, &format[j], 1);
