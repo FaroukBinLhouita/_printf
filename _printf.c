@@ -28,46 +28,46 @@ int _printf(const char *format, ...)
 		else
 		{
 			length++;
-			switch (format[length])
+			if (format[length] == '%')
 			{
-				case 'i':
+                    _putchar(format[length]);
+					n++;
+            }
+			else if (format[length] == 'c')
+            {
+                
+				_putchar(va_arg(argument, int));
+				n++;
+            }
+			else if (format[length] == 's')
+            {
+                
+				str = va_arg(argument, char*);
+				if (str == NULL)
+                {
+                    str = "(null)";
+                }
+                while (str[i] != '\0')
+                {
+                    i++;
+                }
+                write(1, str, i);
+                n += i;
+            }
+            else if (format[length] == 'i')
+			{
 					convert_int(va_arg(argument, int));
 					n++;
-					break;
-				case 'd':
+            }	
+            else if (format[length] == 'd')
+            {
+                
 					convert_int(va_arg(argument, int));
 					n++;
-					break;
-				case '%':
-					_putchar(format[length]);
-					n++;
-					break;
-				case 'c':
-					_putchar(va_arg(argument, int));
-					n++;
-					break;
-				case 's':
-					str = va_arg(argument, char*);
-					if (str == NULL)
-					{
-						str = "(null)";
-					}
-					while (str[i] != '\0')
-					{
-						i++;
-					}
-					write(1, str, i);
-					n += i;
-					break;
-				default:
-					_putchar('%');
-					_putchar(format[length]);
-					n += 1;
-					break;
-			}
+            }
 		}
 		length++;
-	}
+    }
 	va_end(argument);
 	
 	if (n < 0)
