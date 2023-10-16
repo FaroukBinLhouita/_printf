@@ -8,8 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-char buffer[SIZE];
-int index = 0;
+int j = 0, count = 0;
 va_list list;
 
 if (format == NULL)
@@ -19,65 +18,43 @@ return (-1);
 
 va_start(list, format);
 
-while (*format)
+while (format[j] != '\0')
 {
-if (index == SIZE - 1)
+if (format[j] != '%')
 {
-buffer[index] = '\0';
-write(1, buffer, index);
-index = 0;
+write(1, &format[j], 1);
+count++;
 }
-
-if (*format != '%')
-{
-buffer[index] = *format;
-index++;
-}
-
 else
 {
-format++;
-if (*format == 's')
+j++;
+if (format[j] == '%')
 {
-int i;
-char *tmp = buffer_str(list);
-for (i = 0; tmp[i] != '\0'; i++)
+write(1, &format[j], 1);
+count++;
+}
+else if (format[j] == 'c')
 {
-    buffer[index] = tmp[i];
-    index++;
+char c = va_arg(list, int);
+write(1, &c, 1);
+count++;
 }
-}
-else if (*format == 'c')
+else if (format[j] == 's')
 {
-buffer[index] = buffer_char(list);
-index++;
-}
-else if (*format == 'i' || *format == 'd')
+int i = 0;
+char *string = va_arg(list, char*);
+
+while (string[i] != '\0')
 {
-int num = va_arg(list, int);
-char *num_str = buffer_decimal(num);
-while (*num_str)
-{
-    buffer[index] = *num_str;
-    num_str++;
-    index++;
-}
-}
-else if (*format == '%')
-{
-buffer[index] = *format;
-index++;
-}
-}
-format++;
+i++;
 }
 
-if (index > 0)
-{
-buffer[index] = '\0';
-write(1, buffer, index);
+write(1, string, i);
+count += i;
 }
-
+}
+j++;
+}
 va_end(list);
-return (index);
+return (count);
 }
