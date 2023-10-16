@@ -37,15 +37,15 @@ int _printf(const char *format, ...)
 			j++;
 			if (format[j] == '%')
 			{
-                write(1, &format[j], 1);
-				//_putchar(format[j]);
+                //write(1, &format[j], 1);
+				_putchar(format[j]);
 				count++;
             }
 			else if (format[j] == 'c')
             {
 				c = va_arg(list, int);
-				write(1, &c, 1);
-				//_putchar(va_arg(list, int));
+				//write(1, &c, 1);
+				_putchar(va_arg(list, int));
 				count++;
             }
 			else if (format[j] == 's')
