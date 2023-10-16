@@ -8,12 +8,20 @@
  */
 int _printf(const char *format, ...)
 {
-    int j = 0, count = 0;
+    char *string;
+    char c;
+    int i, j = 0, count = 0, index = 0;
     va_list list;
 
-    if (format == NULL)
+    if (format == NULL || (format[0] == '%' && format[1] == '\0'))
     {
     return (-1);
+    }
+
+    
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+    {
+        return (-1);
     }
 
     va_start(list, format);
@@ -35,14 +43,13 @@ int _printf(const char *format, ...)
             }
             else if (format[j] == 'c')
             {
-                char c = va_arg(list, int);
+                c = va_arg(list, int);
                 write(1, &c, 1);
                 count++;
             }
             else if (format[j] == 's')
             {
-                int i;
-                char *string = va_arg(list, char*);
+                string = va_arg(list, char*);
 
                 for(i = 0; string[i] != '\0'; i++);
 
