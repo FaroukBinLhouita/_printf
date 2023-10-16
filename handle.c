@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*#include "main.h"
 
 /**
@@ -160,3 +161,6 @@ va_end(list);
 return (index);
 }
 */
+=======
+
+>>>>>>> bbca7a9c8f7b59631dc8390f7814ad8b1c421f89

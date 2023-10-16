@@ -11,13 +11,6 @@ int _printf(const char *format, ...)
 int j = 0, count = 0;
 va_list list;
 
-if (format == NULL)
-{
-return (-1);
-}
-
-va_start(list, format);
-
 while (format[j] != '\0')
 {
 if (format[j] != '%')
@@ -55,4 +48,3 @@ j++;
 }
 va_end(list);
 return (count);
-}
