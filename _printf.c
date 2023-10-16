@@ -8,57 +8,70 @@
  */
 int _printf(const char *format, ...)
 {
-    char *string;
-    char c;
-    int i, j = 0, count = 0, index = 0;
-    va_list list;
+	va_list argument;
+	int n, i, length = 0;
+	char *str;
 
-    if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-    {
-    return (-1);
-    }
+	va_start(argument, format);
+	/* error check */
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))/* check if NULL char */
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])/* check for only % in code */
+		return (-1);
+	while (format[length] != '\0')
+	{
+		if (format[length] != '%')
+		{
+			write(1, &format[length], 1);
+			n++;
+		}
+		else
+		{
+			length++;
+			switch (format[length])
+			{
+				case 'i':
+					handle_int(va_arg(argument, int));
+					n++;
+					break;
+				case 'd':
+					handle_int(va_arg(argument, int));
+					n++;
+					break;
+				case '%':
+					_putchar(format[length]);
+					n++;
+					break;
+				case 'c':
+					_putchar(va_arg(argument, int));
+					n++;
+					break;
+				case 's':
+					str = va_arg(argument, char*);
+					if (str == NULL)
+					{
+						str = "(null)";
+					}
+					while (str[i] != '\0')
+					{
+						i++;
+					}
+					write(1, str, i);
+					n += i;
+					break;
+				default:
+					_putchar('%');
+					_putchar(format[length]);
+					n += 1;
+					break;
+			}
+		}
+		length++;
+	}
+	va_end(argument);
+	
+	if (n < 0)
+		return (-10);
 
-    
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-    {
-        return (-1);
-    }
-
-    va_start(list, format);
-
-    while (format[j] != '\0')
-    {
-        if (format[j] != '%')
-        {
-            write(1, &format[j], 1);
-            count++;
-        }
-        else
-        {
-            j++;
-            if (format[j] == '%')
-            {
-                write(1, &format[j], 1);
-                count++;
-            }
-            else if (format[j] == 'c')
-            {
-                c = va_arg(list, int);
-                write(1, &c, 1);
-                count++;
-            }
-            else if (format[j] == 's')
-            {
-                string = va_arg(list, char*);
-
-                for(i = 0; string[i] != '\0'; i++);
-
-                write(1, string, i);
-                count += i;
-            }
-        }
-        j++;
-    }
-    va_end(list);
-    return (count);
+	return (n);
 }
