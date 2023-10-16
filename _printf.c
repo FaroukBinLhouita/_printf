@@ -31,11 +31,11 @@ int _printf(const char *format, ...)
 			switch (format[length])
 			{
 				case 'i':
-					handle_int(va_arg(argument, int));
+					convert_int(va_arg(argument, int));
 					n++;
 					break;
 				case 'd':
-					handle_int(va_arg(argument, int));
+					convert_int(va_arg(argument, int));
 					n++;
 					break;
 				case '%':

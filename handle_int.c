@@ -11,7 +11,9 @@ void convert_int(int number)
 	int n;
 
 	if (number == 0)
-		return;
+    {
+        return;
+    }
 
 	n = number / 10;
 
