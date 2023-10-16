@@ -8,7 +8,8 @@
  */
 int _printf(const char *format, ...)
 {
-int j = 0, count = 0;
+char buffer[SIZE];
+int index = 0;
 va_list list;
 
 if (format == NULL)
@@ -18,59 +19,65 @@ return (-1);
 
 va_start(list, format);
 
-while (format[j] != '\0')
+while (*format)
 {
-if (format[j] != '%')
+if (index == SIZE - 1)
 {
-write(1, &format[j], 1);
-count++;
+buffer[index] = '\0';
+write(1, buffer, index);
+index = 0;
 }
+
+if (*format != '%')
+{
+buffer[index] = *format;
+index++;
+}
+
 else
 {
-j++;
-if (format[j] == '%')
+format++;
+if (*format == 's')
 {
-write(1, &format[j], 1);
-count++;
+int i;
+char *tmp = buffer_str(list);
+for (i = 0; tmp[i] != '\0'; i++)
+{
+    buffer[index] = tmp[i];
+    index++;
+}
+}
+else if (*format == 'c')
+{
+buffer[index] = buffer_char(list);
+index++;
+}
+else if (*format == 'i' || *format == 'd')
+{
+int num = va_arg(list, int);
+char *num_str = buffer_decimal(num);
+while (*num_str)
+{
+    buffer[index] = *num_str;
+    num_str++;
+    index++;
+}
+}
+else if (*format == '%')
+{
+buffer[index] = *format;
+index++;
+}
+}
+format++;
 }
 
-else if (format[j] == 'c')
+if (index > 0)
 {
-char c = va_arg(list, int);
-write(1, &c, 1);
-count++;
+buffer[index] = '\0';
+write(1, buffer, index);
 }
 
-else if (format[j] == 's')
-{
-int i = 0;
-char *string = va_arg(list, char*);
-
-while (string[i] != '\0')
-{
-i++;
-}
-
-write(1, string, i);
-count += i;
-}
-
-else if (format[j] == 'i')
-{
-int integer = va_arg(list, int);
-write(1, &integer, 4);
-count++;
-}
-
-else if (format[j] == 'd')
-{
-int dicemal = va_arg(list, double);
-write(1, &dicemal, 8);
-count++;
-}
-}
-j++;
-}
 va_end(list);
-return (count);
+return (index);
 }
