@@ -9,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	va_list list;
-	int n, i, length = 0;
+	int count, i, j = 0;
 	char *str;
 
 	va_start(list, format);
@@ -24,62 +24,58 @@ int _printf(const char *format, ...)
         return (-1);
     }
 
-	while (format[length] != '\0')
+	while (format[j] != '\0')
 	{
-		if (format[length] != '%')
+		if (format[j] != '%')
 		{
-			write(1, &format[length], 1);
-			n++;
+			write(1, &format[j], 1);
+			count++;
 		}
 		else
 		{
 			length++;
-			if (format[length] == '%')
+			if (format[j] == '%')
 			{
-                    _putchar(format[length]);
-					n++;
+                    _putchar(format[j]);
+					count++;
             }
-			else if (format[length] == 'c')
-            {
-                
+			else if (format[j] == 'c')
+            {   
 				_putchar(va_arg(list, int));
-				n++;
+				count++;
             }
-			else if (format[length] == 's')
+			else if (format[j] == 's')
             {
-                
 				str = va_arg(list, char*);
 				if (str == NULL)
                 {
                     str = "(null)";
                 }
-                while (str[i] != '\0')
-                {
-                    i++;
-                }
+                for (i = 0; str[i] != '\0'; i++);
+                
                 write(1, str, i);
-                n += i;
+                count += i;
             }
-            else if (format[length] == 'i')
+            else if (format[j] == 'i')
 			{
 					convert_int(va_arg(list, int));
-					n++;
+					count++;
             }	
-            else if (format[length] == 'd')
+            else if (format[j] == 'd')
             {
                 
 					convert_int(va_arg(list, int));
-					n++;
+					count++;
             }
 		}
-		length++;
+		j++;
     }
 	va_end(list);
 	
-	if (n < 0)
+	if (count < 0)
     {
         return (-10);
     }
 
-	return (n);
+	return (count);
 }
