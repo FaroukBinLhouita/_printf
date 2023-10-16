@@ -8,17 +8,17 @@
  */
 void convert_int(int number)
 {
-	int n;
+int n;
 
-	if (number == 0)
-    {
-        return;
-    }
+if (number == 0)
+{
+return;
+}
 
-	n = number / 10;
+n = number / 10;
 
-	convert_int(n);
-	_putchar(number % 10 + '0');
+convert_int(n);
+_putchar(number % 10 + '0');
 
-	return;
+return;
 }

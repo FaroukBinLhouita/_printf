@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 	va_list list;
 	int count, i, j = 0;
 	char *str;
+	char c;
 
 	va_start(list, format);
 	
@@ -36,12 +37,15 @@ int _printf(const char *format, ...)
 			j++;
 			if (format[j] == '%')
 			{
-                    _putchar(format[j]);
-					count++;
+                write(1, &format[j], 1);
+				//_putchar(format[j]);
+				count++;
             }
 			else if (format[j] == 'c')
-            {   
-				_putchar(va_arg(list, int));
+            {
+				c = va_arg(list, int);
+				write(1, &c, 1);
+				//_putchar(va_arg(list, int));
 				count++;
             }
 			else if (format[j] == 's')
@@ -58,14 +62,13 @@ int _printf(const char *format, ...)
             }
             else if (format[j] == 'i')
 			{
-					convert_int(va_arg(list, int));
-					count++;
+				convert_int(va_arg(list, int));
+				count++;
             }	
             else if (format[j] == 'd')
             {
-                
-					convert_int(va_arg(list, int));
-					count++;
+				convert_int(va_arg(list, int));
+				count++;
             }
 		}
 		j++;
