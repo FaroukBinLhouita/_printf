@@ -11,7 +11,6 @@ int _printf(const char *format, ...)
 	va_list list;
 	int count, i, j = 0;
 	char *str;
-	char c;
 
 	va_start(list, format);
 	
@@ -43,7 +42,7 @@ int _printf(const char *format, ...)
             }
 			else if (format[j] == 'c')
             {
-				c = va_arg(list, int);
+				//c = va_arg(list, int);
 				//write(1, &c, 1);
 				_putchar(va_arg(list, int));
 				count++;
