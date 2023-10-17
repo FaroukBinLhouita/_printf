@@ -21,8 +21,7 @@ while (format[j] != '\0')
 {
 if (format[j] != '%')
 {
-_putchar(format[j]);
-count++;
+count += _putchar(format[j]);
 }
 else
 {
@@ -30,13 +29,11 @@ j++;
 
 if (format[j] == '%')
 {
-_putchar('%');
-count++;
+count += _putchar('%');
 }
 else if (format[j] == 'c')
 {
-_putchar(va_arg(list, int));
-count++;
+count += _putchar(va_arg(list, int));
 }
 else if (format[j] == 's')
 {
