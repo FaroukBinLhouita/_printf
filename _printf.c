@@ -1,5 +1,5 @@
 #include "main.h"
-/*this is just a comment */
+
 /**
  * _printf - my printf function
  * @format: the string should print
