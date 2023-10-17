@@ -49,7 +49,7 @@ count += _puts(string);
 else if (format[j] == 'd' || format[j] == 'i')
 {
 int num = va_arg(list, int);
-value = _itoa(num, num_str);
+_itoa(num, num_str);
 count += _puts(num_str);
 }
 }
