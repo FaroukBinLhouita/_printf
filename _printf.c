@@ -15,10 +15,9 @@ char *str;
 va_start(list, format);
 
 if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-{
 return (-1);
-}
-
+if (format[0] == '%' && format[1] == ' ' && format[2] == NULL)
+return (-1);
 while (format[j] != '\0')
 {
 if (format[j] != '%')
