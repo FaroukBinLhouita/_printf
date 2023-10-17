@@ -6,6 +6,6 @@
 #include <stdarg.h>
 
 int _printf(const char *format, ...);
-void convert_int(int number);
+//void convert_int(int number);
 
 #endif
