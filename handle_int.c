@@ -19,7 +19,6 @@ return;
 n = number / 10;
 
 convert_int(n);
-_putchar(number % 10 + '0');
-
+write(1, number % 10 + '0', 1)
 return;
 }
