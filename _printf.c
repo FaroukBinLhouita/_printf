@@ -49,8 +49,9 @@ else if (format[j] == 'd' || format[j] == 'i')
 {
 char num_str[12];
 int value = va_arg(list, int);
-count += _convert(value, num_str);
+_convert(value, num_str);
 _puts(num_str);
+count++;
 }
 }
 j++;

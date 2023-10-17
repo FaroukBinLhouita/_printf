@@ -27,5 +27,5 @@ str[j] = str[k];
 str[k] = temp;
 }
 
-return (1);
+return (i);
 }
