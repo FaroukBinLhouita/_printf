@@ -21,8 +21,7 @@ while (format[j] != '\0')
 {
 if (format[j] != '%')
 {
-write(1, &format[j], 1);
-count++;
+count += _putchar(format[j]);
 }
 else
 {
