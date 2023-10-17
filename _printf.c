@@ -10,16 +10,12 @@ int _printf(const char *format, ...)
 {
 va_list list;
 int i, j = 0, count = 0;
-char *str, c;
+char *str; 
+char c;
 
 va_start(list, format);
 
 if (format == NULL)
-{
-return (-1);
-}
-
-if (format[0] == '%' && format[1] == ' ' && !format[2]  || (format[0] == '%' && format[1] == '\0'))
 {
 return (-1);
 }
