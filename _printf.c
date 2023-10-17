@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
 va_list list;
 int j = 0, count = 0;
-int len, num;
+
 char *string;
 char num_str[12];
 
@@ -48,8 +48,8 @@ count += _puts(string);
 }
 else if (format[j] == 'd' || format[j] == 'i')
 {
-num = va_arg(list, int);
-len = _itoa(num, num_str);
+int num = va_arg(list, int);
+int len = _itoa(num, num_str);
 count += _puts(num_str);
 }
 }
