@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
     va_list list;
     int j = 0, count = 0;
-    char *string;
+    char *string;0
 
     va_start(list, format);
 
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
                 string = va_arg(list, char*);
                 if (string == NULL)
                     string = NULL_STR;
-                count += _puts(str);
+                count += _puts(*string);
             }
         }
         j++;

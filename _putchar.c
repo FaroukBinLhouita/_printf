@@ -24,5 +24,5 @@ return (str - first);
  */
 int _putchar(char c)
 {
-return(write(1, &c, i));
+return(write(1, &c, 1));
 }
