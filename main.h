@@ -18,11 +18,6 @@ int print_int (va_list list,);
 int print_str(va_list list,);
 int print_percent(va_list list,);
 int print_s(va_list list,);
-
-if (format[0] == '%' && format[1] == ' ' && !format[2]  || (format[0] == '%' && format[1] == '\0'))
-{
-return (-1);
-}
 */
 
 int _printf(const char *format, ...);
