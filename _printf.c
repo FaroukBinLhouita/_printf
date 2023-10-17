@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
     {
         if (format[j] != '%')
         {
-            write(1, format[j], 1);
+            write(1, &format[j], 1);
             count++;
         }
         else
