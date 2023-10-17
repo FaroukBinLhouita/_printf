@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _printf - writes the character to stdout
  * @format: the specifier char that determine the type of data to be printed
@@ -160,3 +161,4 @@ int _printf(const char *format, ...)
 
 	return (count);
 }
+*/
