@@ -1,8 +1,9 @@
 #include "main.h"
 /**
- *  _print_integer - function that prints integer
- * @arg: va_list input
- * Return: length ==> number of character printed
+ * _convert - converts an integer to a string
+ * @num: the integer to convert
+ * @str: the buffer to store the string
+ * Return: the length of the string
  */
 int _convert(int num, char *str)
 {
@@ -26,6 +27,6 @@ char temp = str[j];
 str[j] = str[k];
 str[k] = temp;
 }
-
+str[i] = '\0';
 return (i);
 }
