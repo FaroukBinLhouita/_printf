@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
     va_list list;
     int j = 0, count = 0;
-    char *str;
+    char *string;
 
     va_start(list, format);
 
@@ -28,24 +28,25 @@ int _printf(const char *format, ...)
 
             if (format[j] == '%')
             {
-                count += _putchar('%');
+                _putchar('%');
+                count++;
             }
             else if (format[j] == 'c')
             {
-                count += _putchar(va_arg(list, int));
+                _putchar(va_arg(list, int));
+                count++;
             }
             else if (format[j] == 's')
             {
-                str = va_arg(list, char*);
-                if (str == NULL)
-                    str = NULL_STR;
+                string = va_arg(list, char*);
+                if (string == NULL)
+                    string = NULL_STR;
                 count += _puts(str);
             }
         }
         j++;
     }
 
-    _putchar(BUFF_AGAIN);
     va_end(list);
     return (count);
 }

@@ -24,17 +24,5 @@ return (str - first);
  */
 int _putchar(char c)
 {
-static int i;
-static char buff[BUFF_SIZE];
-
-if (c == BUFF_AGAIN || i >= BUFF_SIZE)
-{
-write(1, buff, i);
-i = 0;
-}
-if (c != BUFF_AGAIN)
-{
-buff[i++] = c;
-}
-return (i);
+return(write(1, &c, i));
 }
