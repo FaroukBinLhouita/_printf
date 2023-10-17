@@ -48,7 +48,6 @@ count += _puts(string);
 else if (format[j] == 'd' || format[j] == 'i')
 {
 num = va_arg(list, int);
-num_str[12];
 len = _itoa(num, num_str);
 count += _puts(num_str);
 }
