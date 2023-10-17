@@ -11,7 +11,6 @@ va_list list;
 int j = 0, count = 0;
 
 char *string;
-char num_str[12];
 
 va_start(list, format);
 
