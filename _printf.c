@@ -58,7 +58,7 @@ for (i = 0; str[i] != '\0'; i++)
 write(1, str, i);
 count += i;
 }
-else if (format[j] == 'i')
+/*else if (format[j] == 'i')
 {
 convert_int(va_arg(list, int));
 count++;
@@ -68,7 +68,7 @@ else if (format[j] == 'd')
 convert_int(va_arg(list, int));
 count++;
 }
-}
+}*/
 j++;
 }
 va_end(list);

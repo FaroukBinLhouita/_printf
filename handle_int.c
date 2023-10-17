@@ -1,4 +1,4 @@
-#include "main.h"
+/*#include "main.h"
 
 
 /**
@@ -6,7 +6,7 @@
  * @number: the number who will convert
  *
  * Return : void
- */
+ * /
 void convert_int(int number)
 {
 int n;
@@ -19,6 +19,7 @@ return;
 n = number / 10;
 
 convert_int(n);
-write(1, number % 10 + '0', 1)
+write(1, number % 10 + '0', 1);
 return;
 }
+*/
