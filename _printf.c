@@ -44,7 +44,7 @@ else if (format[j] == 's')
 str = va_arg(list, char*);
 if (str == NULL)
 {
-	str = "(null)";
+	str = NULL_STR;
 }
 for (i = 0; str[i] != '\0'; i++)
 ;
