@@ -67,8 +67,8 @@ else if (format[j] == 'd')
 {
 convert_int(va_arg(list, int));
 count++;
-}
 }*/
+}
 j++;
 }
 va_end(list);
