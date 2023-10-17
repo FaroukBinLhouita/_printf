@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 va_list list;
-int value = 0, j = 0, count = 0;
+int j = 0, count = 0;
 
 char *string;
 char num_str[12];
