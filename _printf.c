@@ -9,17 +9,17 @@
 int _printf(const char *format, ...)
 {
 va_list list;
-int count = 0, i, j = 0;
-char *str;
+int i, j = 0, count = 0;
+char *str, c;
 
 va_start(list, format);
 
-if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+if (format == NULL)
 {
 return (-1);
 }
 
-if (format[0] == '%' && format[1] == ' ' && !format[2])
+if (format[0] == '%' && format[1] == ' ' && !format[2]  || (format[0] == '%' && format[1] == '\0'))
 {
 return (-1);
 }
@@ -36,15 +36,13 @@ else
 j++;
 if (format[j] == '%')
 {
-//write(1, &format[j], 1);
-_putchar(format[j]);
+write(1, &format[j], 1);
 count++;
 }
 else if (format[j] == 'c')
 {
-//c = va_arg(list, int);
-//write(1, &c, 1);
-_putchar(va_arg(list, int));
+c = va_arg(list, int);
+write(1, &c, 1);
 count++;
 }
 else if (format[j] == 's')
@@ -54,7 +52,8 @@ if (str == NULL)
 {
 	str = "(null)";
 }
-for (i = 0; str[i] != '\0'; i++);
+for (i = 0; str[i] != '\0'; i++)
+;
 
 write(1, str, i);
 count += i;
