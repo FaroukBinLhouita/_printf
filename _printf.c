@@ -8,8 +8,8 @@
 int _printf(const char *format, ...)
 {
 va_list list;
-int j = 0, count = 0;
-char *string;
+int len, num, j = 0, count = 0;
+char *string, num_str[12];
 
 va_start(list, format);
 
@@ -47,7 +47,7 @@ count += _puts(string);
 else if (format[j] == 'd' || format[j] == 'i')
 {
 int num = va_arg(list, int);
-char num_str[12]; // Assuming a maximum of 11 digits for an integer
+char num_str[12];
 int len = _itoa(num, num_str);
 count += _puts(num_str);
 }
