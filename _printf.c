@@ -46,13 +46,14 @@ if (string == NULL)
 string = NULL_STR;
 count += _puts(string);
 }
-/*else if (format[j] == 'd' || format[j] == 'i')
+else if (format[j] == 'd' || format[j] == 'i')
 {
 int value = va_arg(list, int);
-_itoa(value, num_str);
-count += _puts(num_str);
+count += _print_integer(value);
+ /*_puts(num_str);
 }
 */
+
 }
 j++;
 }
