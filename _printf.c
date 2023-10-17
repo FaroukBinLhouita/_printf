@@ -49,11 +49,10 @@ count += _puts(string);
 else if (format[j] == 'd' || format[j] == 'i')
 {
 int value = va_arg(list, int);
-count += _print_integer(value);
- /*_puts(num_str);
+_print_integer(value);
+count++;
+ /*_puts(num_str);*/
 }
-*/
-
 }
 j++;
 }
