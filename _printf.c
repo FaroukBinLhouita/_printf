@@ -28,36 +28,23 @@ else
 j++;
 if (format[j] == '%')
 {
-_putchar(format[j]);
-count++;
+count += _putchar(format[j]);
 }
 else if (format[j] == 'c')
 {
-_putchar(va_arg(list, int));
-count++;
+count += _putchar(va_arg(list, int));
 }
 else if (format[j] == 's')
 {
 str = va_arg(list, char*);
 if (str == NULL)
-{
-	str = NULL_STR;
-}
-for (i = 0; str[i] != '\0'; i++)
-;
-
-write(1, str, i);
-count += i;
+str = NULL_STR;
+count += _puts(str);
 }
 }
 j++;
 }
+_putchar(BUFF_AGAIN);
 va_end(list);
-
-if (count < 0)
-{
-return (-10);
-}
-
 return (count);
 }
