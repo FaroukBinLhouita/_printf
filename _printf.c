@@ -50,8 +50,7 @@ else if (format[j] == 'd' || format[j] == 'i')
 char num_str[12];
 int value = va_arg(list, int);
 _convert(value, num_str);
-_puts(num_str);
-count++;
+count += _puts(num_str);
 }
 }
 j++;
