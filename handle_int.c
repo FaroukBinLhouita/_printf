@@ -4,36 +4,28 @@
  * @arg: va_list input
  * Return: length ==> number of character printed
  */
-int _print_integer(int arg)
+int _convert(int num, char *str)
 {
-	int get_num, calc, length;
-	unsigned int number;
+int j, k, i = 0;
 
-	get_num = arg;
+if (num &lt; 0)
+{
+num = -num;
+str[i++] = '-';
+}
 
-	calc = 1;
-	length = 0;
+do
+{
+str[i++] = num % 10 + '0';
+num /= 10;
+} while (num &gt; 0);
 
-	if (get_num < 0)
-	{
-		length++;
-		number = get_num * -1;
-	}
-	else
-		number = get_num;
+for (j = 0, k = i - 1; j &lt; k; j++, k--)
+{
+char temp = str[j];
+str[j] = str[k];
+str[k] = temp;
+}
 
-	while (number / calc > 9)
-	{
-		calc *= 10;
-	}
-
-	while (calc != 0)
-	{
-		length++;
-		_putchar(number / calc + '0');
-		number %= calc;
-		calc /= 10;
-	}
-
-	return (length);
+return (i);
 }

@@ -47,15 +47,14 @@ count += _puts(string);
 }
 else if (format[j] == 'd' || format[j] == 'i')
 {
+char num_str[12];
 int value = va_arg(list, int);
-_print_integer(value);
-count++;
- /*_puts(num_str);*/
+count +=_convert(value);
+_puts(num_str);
 }
 }
 j++;
 }
-
 va_end(list);
 return (count);
 }
