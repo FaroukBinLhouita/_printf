@@ -44,6 +44,13 @@ if (string == NULL)
 string = NULL_STR;
 count += _puts(string);
 }
+else if (format[j] == 'd' || format[j] == 'i')
+{
+int num = va_arg(list, int);
+char num_str[12]; // Assuming a maximum of 11 digits for an integer
+int len = _itoa(num, num_str);
+count += _puts(num_str);
+}
 }
 j++;
 }
