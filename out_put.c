@@ -10,11 +10,15 @@ int _puts(char *str)
 {
 int len = 0;
 if (str == NULL)
+{
 return (0);
+}
 while (*str)
 {
 if (_putchar(*str++) == -1)
+{
 return (-1);
+}
 len++;
 }
 return (len);

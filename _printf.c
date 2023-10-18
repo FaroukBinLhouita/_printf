@@ -9,7 +9,6 @@ int _printf(const char *format, ...)
 {
 va_list list;
 int j = 0, count = 0;
-
 char *string;
 
 va_start(list, format);
@@ -21,19 +20,21 @@ while (format[j] != '\0')
 {
 if (format[j] != '%')
 {
-count += _putchar(format[j]);
+_putchar(format[j]);
+count++;
 }
 else
 {
 j++;
-
 if (format[j] == '%')
 {
-count += _putchar('%');
+_putchar('%');
+count++;
 }
 else if (format[j] == 'c')
 {
-count += _putchar(va_arg(list, int));
+_putchar(va_arg(list, int));
+count++;
 }
 else if (format[j] == 's')
 {
