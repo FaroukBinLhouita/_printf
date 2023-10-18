@@ -6,13 +6,13 @@
  *
  * Return: 1 succes
  */
-int _puts (char *str)
+int _puts(char *str)
 {
 char *first = str;
 
 while (*str)
 {
-    _putchar(*str++);
+	_putchar(*str++);
 }
 return (str - first);
 }
@@ -24,5 +24,5 @@ return (str - first);
  */
 int _putchar(char c)
 {
-return(write(1, &c, 1));
+return (write(1, &c, 1));
 }
