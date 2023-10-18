@@ -13,5 +13,10 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
+<<<<<<< HEAD
 int _puts(char *str);
+=======
+int _puts (char *str);
+int _convert(int num, char *str);
+>>>>>>> a865776af9a8a558cb7b0a0124f03f149ecd7f2d
 #endif
