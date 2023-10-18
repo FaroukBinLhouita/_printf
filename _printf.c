@@ -7,7 +7,6 @@
  */
 int _printf(const char *format, ...)
 {
-<<<<<<< HEAD
 	va_list list;
 	int j = 0, count = 0;
 	char *string;
@@ -28,36 +27,33 @@ int _printf(const char *format, ...)
 		{
 			j++;
 
-			if (format[j] == '%')
-			{
-				_putchar('%');
-				count++;
-			}
-			else if (format[j] == 'c')
-			{
-				_putchar(va_arg(list, int));
-				count++;
-			}
-			else if (format[j] == 's')
-			{
-				string = va_arg(list, char*);
-				if (string == NULL)
-					string = NULL_STR;
-				count += _puts(string);
-			}
-		}
-		j++;
-=======
+if (format[j] == '%')
+{
+_putchar('%');
+count++;
+}
+else if (format[j] == 'c')
+{
+_putchar(va_arg(list, int));
+count++;
+}
+else if (format[j] == 's')
+{
+string = va_arg(list, char*);
+if (string == NULL)
+string = NULL_STR;
+count += _puts(string);
+}
+}
+j++;
 va_list list;
 int j = 0, count = 0;
-
 char *string;
 
 va_start(list, format);
-
-if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+if (format == NULL ||
+(format[0] == '%' && format[1] == '\0'))
 return (-1);
-
 while (format[j] != '\0')
 {
 if (format[j] != '%')
@@ -67,7 +63,6 @@ count += _putchar(format[j]);
 else
 {
 j++;
-
 if (format[j] == '%')
 {
 count += _putchar('%');
@@ -88,12 +83,12 @@ else if (format[j] == 'd' || format[j] == 'i')
 char num_str[12];
 int value = va_arg(list, int);
 _convert(value, num_str);
+
 count += _puts(num_str);
-}
-}
-j++;
->>>>>>> a865776af9a8a558cb7b0a0124f03f149ecd7f2d
-}
-va_end(list);
-return (count);
+				}
+			}
+			j++;
+		}
+		va_end(list);
+		return (count);
 }
