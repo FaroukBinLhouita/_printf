@@ -24,7 +24,7 @@ return (len);
  * @c: the charcter
  *
  * Return: succes 1
- */
+ * /
 int _putchar(char c)
 {
 if (write(1, &c, 1) == -1)
