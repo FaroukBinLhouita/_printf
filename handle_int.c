@@ -19,7 +19,7 @@ do
 {
 str[i++] = num % 10 + '0';
 num /= 10;
-} while (num > 0);
+}while (num > 0);
 
 for (j = 0, k = i - 1; j < k; j++, k--)
 {
