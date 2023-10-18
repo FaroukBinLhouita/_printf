@@ -1,4 +1,4 @@
-#ifndef MAIN_H
+/*#ifndef MAIN_H
 #define MAIN_H
 
 #include <limits.h>
@@ -18,3 +18,4 @@ int _puts(char *str);
 int _convert(int num, char *str);
 
 #endif
+*/
