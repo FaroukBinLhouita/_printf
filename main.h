@@ -9,11 +9,12 @@
 
 #define BUFF_SIZE 1024
 #define BUFF_AGAIN -1
- 
 #define NULL_STR "(null)"
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int _puts (char *str);
+int _puts(char *str);
+int _puts(char *str);
 int _convert(int num, char *str);
+
 #endif

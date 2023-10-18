@@ -6,7 +6,7 @@
  *
  * Return: 1 succes
  */
-int _puts (char *str)
+int _puts(char *str)
 {
 int len = 0;
 if (str == NULL)
@@ -17,7 +17,7 @@ if (_putchar(*str++) == -1)
 return (-1);
 len++;
 }
-return len;
+return (len);
 }
 /**
  * _putchar - print a charcter at a time
