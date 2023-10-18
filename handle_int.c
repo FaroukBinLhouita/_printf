@@ -1,10 +1,10 @@
-#include "main.h"
-/**
+/*#include "main.h"
+*
  * _convert - converts an integer to a string
  * @num: the integer to convert
  * @str: the buffer to store the string
  * Return: the length of the string
- */
+ 
 int _convert(int num, char *str)
 {
 int j, k, i = 0;
@@ -30,3 +30,4 @@ str[k] = temp;
 str[i] = '\0';
 return (i);
 }
+*/
